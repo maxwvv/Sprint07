@@ -1,0 +1,343 @@
+/* =====================================================================
+   Alvo Certo — Design System
+   Tokens (cores, espaçamento, sombras, tipografia) + utilitários e
+   componentes reaproveitados nas telas. Sem dependência de framework CSS.
+   ===================================================================== */
+
+:root {
+  /* Paleta da marca */
+  --ac-primary: #2541b2;
+  --ac-primary-600: #1d3596;
+  --ac-primary-700: #162a78;
+  --ac-primary-050: #eef2ff;
+  --ac-accent: #ff4d4d;
+  --ac-accent-600: #e23c3c;
+
+  --ac-ink: #16192b;
+  --ac-muted: #5b6472;
+  --ac-line: #e6e9f2;
+  --ac-bg: #f6f8fd;
+  --ac-surface: #ffffff;
+
+  --ac-success: #1a9e6a;
+  --ac-warning: #f4a62a;
+  --ac-danger: #d64545;
+
+  /* Estrutura */
+  --ac-radius-sm: 10px;
+  --ac-radius: 16px;
+  --ac-radius-lg: 24px;
+  --ac-shadow-sm: 0 1px 2px rgba(22, 25, 43, 0.06), 0 2px 8px rgba(22, 25, 43, 0.06);
+  --ac-shadow: 0 8px 30px rgba(22, 25, 43, 0.1);
+  --ac-shadow-lg: 0 20px 50px rgba(22, 25, 43, 0.16);
+  --ac-container: 1140px;
+  --ac-header-h: 68px;
+  --ac-focus-ring: rgba(37, 65, 178, 0.25);
+
+  --ac-font: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ------------------------- Reset ------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--ac-font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ac-ink);
+  background-color: var(--ac-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Foco visível e consistente para navegação por teclado */
+:focus-visible {
+  outline: 3px solid var(--ac-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+a {
+  color: var(--ac-primary-600);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ac-ink);
+}
+
+/* ------------------------- Layout ------------------------- */
+
+.ac-container {
+  width: 100%;
+  max-width: var(--ac-container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.ac-section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.ac-section--tight {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.ac-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac-primary-600);
+  margin-bottom: 0.75rem;
+}
+
+.ac-section-title {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.ac-section-lead {
+  font-size: 1.05rem;
+  color: var(--ac-muted);
+  max-width: 46ch;
+}
+
+.ac-text-accent {
+  color: var(--ac-accent);
+}
+.ac-text-primary {
+  color: var(--ac-primary);
+}
+.ac-text-muted {
+  color: var(--ac-muted);
+}
+
+/* ------------------------- Botões ------------------------- */
+
+.ac-btn {
+  --_bg: var(--ac-primary);
+  --_fg: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+  background-color: var(--_bg);
+  color: var(--_fg);
+}
+
+.ac-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ac-shadow);
+  color: var(--_fg);
+}
+
+.ac-btn:active {
+  transform: translateY(0);
+}
+
+.ac-btn--accent {
+  --_bg: var(--ac-accent);
+}
+.ac-btn--accent:hover {
+  background-color: var(--ac-accent-600);
+}
+
+.ac-btn--ghost {
+  --_bg: transparent;
+  --_fg: var(--ac-primary-600);
+  border-color: currentColor;
+}
+.ac-btn--ghost:hover {
+  background-color: var(--ac-primary-050);
+}
+
+.ac-btn--light {
+  --_bg: #fff;
+  --_fg: var(--ac-primary-700);
+}
+
+.ac-btn--block {
+  width: 100%;
+}
+
+.ac-btn:disabled,
+.ac-btn[aria-disabled='true'] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ------------------------- Cards ------------------------- */
+
+.ac-card {
+  background: var(--ac-surface);
+  border: 1px solid var(--ac-line);
+  border-radius: var(--ac-radius);
+  padding: 1.75rem;
+  box-shadow: var(--ac-shadow-sm);
+  height: 100%;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ac-card--hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ac-shadow);
+}
+
+.ac-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--ac-primary-050);
+  color: var(--ac-primary-600);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ------------------------- Formulários ------------------------- */
+
+.ac-field {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.ac-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.ac-input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--ac-line);
+  border-radius: var(--ac-radius-sm);
+  font-size: 1rem;
+  background: #fff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ac-input:focus {
+  outline: none;
+  border-color: var(--ac-primary);
+  box-shadow: 0 0 0 4px var(--ac-focus-ring);
+}
+
+.ac-input[aria-invalid='true'] {
+  border-color: var(--ac-danger);
+}
+
+.ac-error {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--ac-danger);
+}
+
+/* ------------------------- Utilidades ------------------------- */
+
+.ac-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ac-skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -3rem;
+  z-index: 1080;
+  background: var(--ac-primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 var(--ac-radius-sm) var(--ac-radius-sm);
+  transition: top 0.2s ease;
+}
+.ac-skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
