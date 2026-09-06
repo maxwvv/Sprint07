@@ -17,49 +17,50 @@ automatizados (Vitest + Cypress) e interface responsiva e acessível.
 
 ---
 
-## 📌 Sobre o projeto
+## Sobre o projeto
 
-O **Alvo Certo** é um projeto de portfólio, originado de um trabalho acadêmico (Sprints 07 e 08).
-A proposta é reduzir a distância entre o estudante e a informação que ajuda a decidir **o que
-estudar** e **que carreira seguir**.
+Escolher uma carreira trava muita gente, e não por falta de vontade. A informação está espalhada
+por dezenas de sites, costuma vir em linguagem difícil e quase nunca começa pelo que a pessoa
+gosta de fazer.
 
-O foco é entregar **ferramentas**, não apenas conteúdo: um teste vocacional interativo baseado
-no modelo **RIASEC (Holland)** que calcula o perfil do usuário e recomenda áreas e profissões
-com afinidade, além de um painel autenticado com técnicas de estudo e um panorama de profissões
-por grande área.
+O Alvo Certo junta num lugar só três coisas que ajudam nessa decisão: um teste vocacional que
+devolve um perfil, técnicas de estudo explicadas de forma prática e um panorama de profissões
+por área. O teste usa o modelo RIASEC (Holland): você responde 12 afirmações e recebe o perfil
+dominante junto com as áreas e carreiras que mais combinam com ele.
 
-> ⚠️ **É uma demonstração.** Não representa uma empresa real. Os formulários enviam para uma API
-> de teste (MockAPI) apenas para exercitar os fluxos.
+O projeto nasceu de um trabalho acadêmico (Sprints 07 e 08) e hoje serve como peça de portfólio.
 
-## 🔗 Demo
+> **É uma demonstração.** Não representa uma empresa real. Os formulários gravam numa API de
+> teste (MockAPI) só para exercitar os fluxos de envio.
+
+## Demo
 
 <!-- Adicione a URL após publicar o deploy (Vercel, Netlify ou GitHub Pages). -->
 
 _Deploy ainda não publicado._
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-| Área                 | O que faz                                                                                                                                                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Landing page**     | Apresentação do produto: hero, números, "o que você encontra", "como funciona" e CTAs.                                                                                                                                      |
-| **Teste vocacional** | Questionário RIASEC de 12 perguntas, com barra de progresso, cálculo de perfil, recomendação de áreas/carreiras e persistência do último resultado (`localStorage`). Público — não exige cadastro.                          |
-| **Cadastro / Login** | Formulários com validação em tempo real, feedback de erro e estados de carregamento. Consome API REST (MockAPI), verifica duplicidade de usuário e não trafega a senha na _querystring_.                                    |
-| **Painel do aluno**  | Rota protegida por _navigation guard_. Saudação personalizada, técnicas de estudo com vídeos, roteiro de escolha profissional, teste vocacional embutido e profissões em alta (valores em BRL). A seção ativa é persistida. |
-| **Contato**          | Formulário validado que registra a mensagem na API de teste, com estados de sucesso e erro.                                                                                                                                 |
-| **404**              | Página dedicada para rotas inexistentes.                                                                                                                                                                                    |
+| Página               | O que faz                                                                                                                                                                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Landing page**     | Hero, números do projeto, seção "o que você encontra", "como funciona" e chamadas para ação.                                                                                                                                                   |
+| **Teste vocacional** | 12 perguntas do modelo RIASEC, com barra de progresso e cálculo de perfil. Recomenda áreas e carreiras e guarda o último resultado no `localStorage`. Aberto ao público, sem cadastro.                                                         |
+| **Cadastro e login** | Validação em tempo real, mensagens de erro e estado de carregamento. Fala com a API REST (MockAPI), checa se o usuário já existe e nunca manda a senha na _query string_.                                                                      |
+| **Painel do aluno**  | Rota protegida por _navigation guard_. Saudação personalizada, técnicas de estudo com vídeo, roteiro de escolha profissional, o teste vocacional embutido e profissões em alta com valores em reais. A seção aberta fica salva entre visitas.  |
+| **Contato**          | Formulário validado que grava a mensagem na API de teste, com retorno de sucesso e de erro.                                                                                                                                                    |
+| **Página 404**       | Tela própria para endereços que não existem.                                                                                                                                                                                                  |
 
-## 🧰 Stack e ferramentas
+## Stack e ferramentas
 
-- **Vue 3** (`<script setup>`, Composition API) + **Vue Router 4** (rotas _lazy_, guards, `scrollBehavior`)
-- **Vite 6** — build e dev server
-- **Axios** — cliente HTTP único, URL base via variável de ambiente
-- **Design system próprio em CSS** (`src/assets/styles/main.css`) — tokens em custom properties,
-  sem framework CSS
-- **Vitest** + **@vue/test-utils** — testes unitários e de componente
-- **Cypress** — testes end-to-end e de API
-- **ESLint** + **Prettier** — padronização e qualidade de código
+- Vue 3 (`<script setup>`, Composition API) e Vue Router 4, com rotas _lazy_, guards e `scrollBehavior`
+- Vite 6 para build e servidor de desenvolvimento
+- Axios: um único cliente HTTP, com a URL base vinda de variável de ambiente
+- Design system próprio em CSS (`src/assets/styles/main.css`): tokens em custom properties, sem framework CSS
+- Vitest e @vue/test-utils para testes de unidade e de componente
+- Cypress para testes de ponta a ponta e de API
+- ESLint e Prettier para padronizar o código
 
-## 📁 Estrutura de pastas
+## Estrutura de pastas
 
 ```
 src/
@@ -84,11 +85,11 @@ tests/                     # Vitest (unit/componente) + setup
 cypress/e2e/               # testes end-to-end e de API
 ```
 
-## 🚀 Como rodar
+## Como rodar
 
 ### Pré-requisitos
 
-- Node.js **20+** (ver `.nvmrc`)
+- Node.js 20+ (ver `.nvmrc`)
 - npm 10+
 
 ### Passos
@@ -108,7 +109,7 @@ npm run build
 npm run preview
 ```
 
-## 🧪 Testes e qualidade
+## Testes e qualidade
 
 ```bash
 # Lint e formatação
@@ -125,39 +126,27 @@ npm run test:e2e            # headless
 npm run test:e2e:open       # interface interativa
 ```
 
-Cobertura atual dos testes unitários: `App`, `Home`, `Contato`, o algoritmo de pontuação do
-teste vocacional (`scoreRiasec`) e o componente `VocationalQuiz` (fluxo completo).
-Os testes E2E cobrem navegação, 404, cadastro, login, rota protegida, logout e o fluxo
-cadastro → login → painel, além de dois testes diretos de API.
+Os testes de unidade cobrem `App`, `Home`, `Contato`, o cálculo de perfil do teste
+(`scoreRiasec`) e o fluxo completo do componente `VocationalQuiz`. Os testes de ponta a ponta
+passam por navegação, página 404, cadastro, login, rota protegida, logout e o caminho
+cadastro para login para painel, mais dois testes que batem direto na API.
 
-## 🏗️ Decisões técnicas em destaque
+## Decisões técnicas
 
-- **Design system sem framework CSS**: tokens em CSS custom properties (`--ac-*`), um reset
-  enxuto e componentes reaproveitados. O bundle de CSS ficou em ~30 KB (era ~370 KB com o
-  Bootstrap importado inteiro, que não era usado).
-- **Ícones em SVG inline** (`AppIcon.vue`): evita baixar uma webfont de ~300 KB para poucos glifos.
-- **Rotas _lazy_ + code splitting**: cada tela vira um chunk separado no build.
-- **Navigation guard** para `/paineldoaluno` e `guestOnly` para login/cadastro.
-- **Estado de autenticação como _singleton_** no escopo do módulo — compartilhado por header,
-  painel e guards sem biblioteca de estado global.
-- **Acessibilidade**: HTML semântico (`header`/`main`/`footer`/`nav`), _skip link_,
-  `:focus-visible` consistente, `aria-*` no menu e no progresso do quiz, `prefers-reduced-motion`.
-- **Ilustração do hero em SVG inline** no lugar de uma imagem pesada.
+- **Design system sem framework CSS.** Tokens em custom properties (`--ac-*`), um reset curto e
+  componentes reaproveitados. O CSS final ficou em cerca de 30 KB. Com o Bootstrap importado
+  inteiro, que o projeto não usava, eram cerca de 370 KB.
+- **Ícones em SVG inline** (`AppIcon.vue`), no lugar de uma webfont de cerca de 300 KB para meia
+  dúzia de glifos.
+- **Rotas _lazy_ com code splitting.** Cada tela vira um arquivo separado no build.
+- **`navigation guard`** em `/paineldoaluno` e **`guestOnly`** em login e cadastro.
+- **Estado de autenticação como _singleton_** no escopo do módulo. Header, painel e guards
+  compartilham o mesmo estado sem biblioteca de estado global.
+- **Acessibilidade.** HTML semântico (`header`, `main`, `footer`, `nav`), _skip link_,
+  `:focus-visible` consistente, `aria-*` no menu e na barra de progresso do teste, suporte a
+  `prefers-reduced-motion`.
+- **Ilustração do hero em SVG inline**, no lugar de uma imagem pesada.
 
-## 🗺️ Melhorias futuras
-
-- [ ] Salvar o resultado do teste vocacional no perfil do usuário (API), não só no `localStorage`.
-- [ ] Autenticação real com backend (hash de senha, token/JWT).
-- [ ] Histórico de resultados e trilha de estudos personalizada por perfil.
-- [ ] Converter o logo (`imagem.png`) para SVG/WebP.
-- [ ] Testes de acessibilidade automatizados (axe) e CI (GitHub Actions).
-
-## 🌐 Deploy
-
-Projeto 100% estático após `npm run build` (pasta `dist/`). Compatível com Vercel, Netlify ou
-GitHub Pages. Para SPAs, configure o _fallback_ de rotas para `index.html`. Em GitHub Pages,
-ajuste `base` no `vite.config.js` para `/<nome-do-repo>/`.
-
-## 📄 Licença
+## Licença
 
 [MIT](LICENSE).
